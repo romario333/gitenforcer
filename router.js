@@ -81,10 +81,10 @@ var getAllRepos = exports.getAllRepos = function (context, callback) {
     // add more options
     if (context.options.org) {
         opts.org = context.options.org;
-        getRepos = context.github.repos.getFromOrg;
+        getRepos = context.github.repos.getForOrg;
     } else if (context.options.user) {
         opts.user = context.options.user;
-        getRepos = context.github.repos.getFromUser;
+        getRepos = context.github.repos.getForUser;
     }
 
     function _fetch() {

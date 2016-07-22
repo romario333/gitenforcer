@@ -17,11 +17,12 @@ var gitenforcer = module.exports = function (options) {
     this.options = options;
 
     // setup the github client
-    this.github = new Github({ version: '3.0.0', debug: false });
+    this.github = new Github({ version: '3.0.0', debug: false, host: 'github.hpe.com', pathPrefix: '/api/v3' });
     this.github.authenticate({ type: 'oauth', token: this.options.token });
 
     // setup the express app
     this.app = express();
+    this.app.set('views', __dirname + '/views');
     this.app.set('view engine', 'jade');
     this.app.use(express.logger());
     this.app.use(express.favicon());
